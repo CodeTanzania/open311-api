@@ -195,7 +195,13 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction"
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -401,7 +407,13 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction"
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//jurisdictions"
+      }
+    ]
   },
   {
     "type": "get",
@@ -599,7 +611,13 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction"
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -874,7 +892,13 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction"
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -1142,7 +1166,13 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction"
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//jurisdictions"
+      }
+    ]
   },
   {
     "type": "put",
@@ -1417,7 +1447,13 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction"
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
+      }
+    ]
   },
   {
     "type": "delete",
@@ -1541,7 +1577,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/priority_router.js",
-    "groupTitle": "Priority"
+    "groupTitle": "Priority",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//priorities/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -1684,7 +1725,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/priority_router.js",
-    "groupTitle": "Priority"
+    "groupTitle": "Priority",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//priorities"
+      }
+    ]
   },
   {
     "type": "get",
@@ -1808,7 +1854,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/priority_router.js",
-    "groupTitle": "Priority"
+    "groupTitle": "Priority",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//priorities/:id"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -1953,7 +2004,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/priority_router.js",
-    "groupTitle": "Priority"
+    "groupTitle": "Priority",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//priorities/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -2109,7 +2165,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/priority_router.js",
-    "groupTitle": "Priority"
+    "groupTitle": "Priority",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//priorities"
+      }
+    ]
   },
   {
     "type": "put",
@@ -2261,7 +2322,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/priority_router.js",
-    "groupTitle": "Priority"
+    "groupTitle": "Priority",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//priorities/:id"
+      }
+    ]
   },
   {
     "type": "delete",
@@ -2431,7 +2497,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_router.js",
-    "groupTitle": "Service"
+    "groupTitle": "Service",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//services/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -2601,7 +2672,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_router.js",
-    "groupTitle": "Service"
+    "groupTitle": "Service",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//services/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -2765,7 +2841,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_router.js",
-    "groupTitle": "Service"
+    "groupTitle": "Service",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//services"
+      }
+    ]
   },
   {
     "type": "delete",
@@ -2914,7 +2995,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_group_router.js",
-    "groupTitle": "ServiceGroup"
+    "groupTitle": "ServiceGroup",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -3063,7 +3149,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_group_router.js",
-    "groupTitle": "ServiceGroup"
+    "groupTitle": "ServiceGroup",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -3220,7 +3311,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_group_router.js",
-    "groupTitle": "ServiceGroup"
+    "groupTitle": "ServiceGroup",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicegroups"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -3404,7 +3500,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_group_router.js",
-    "groupTitle": "ServiceGroup"
+    "groupTitle": "ServiceGroup",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -3588,7 +3689,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_group_router.js",
-    "groupTitle": "ServiceGroup"
+    "groupTitle": "ServiceGroup",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicegroups"
+      }
+    ]
   },
   {
     "type": "put",
@@ -3772,7 +3878,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_group_router.js",
-    "groupTitle": "ServiceGroup"
+    "groupTitle": "ServiceGroup",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -3991,7 +4102,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_router.js",
-    "groupTitle": "Service"
+    "groupTitle": "Service",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//services/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -4189,7 +4305,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_router.js",
-    "groupTitle": "Service"
+    "groupTitle": "Service",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//services"
+      }
+    ]
   },
   {
     "type": "put",
@@ -4408,7 +4529,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_router.js",
-    "groupTitle": "Service"
+    "groupTitle": "Service",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//services/:id"
+      }
+    ]
   },
   {
     "type": "delete",
@@ -4676,7 +4802,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_request_router.js",
-    "groupTitle": "ServiceRequest"
+    "groupTitle": "ServiceRequest",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -4944,7 +5075,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_request_router.js",
-    "groupTitle": "ServiceRequest"
+    "groupTitle": "ServiceRequest",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -5206,7 +5342,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_request_router.js",
-    "groupTitle": "ServiceRequest"
+    "groupTitle": "ServiceRequest",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicerequests"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -5579,7 +5720,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_request_router.js",
-    "groupTitle": "ServiceRequest"
+    "groupTitle": "ServiceRequest",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -5945,7 +6091,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_request_router.js",
-    "groupTitle": "ServiceRequest"
+    "groupTitle": "ServiceRequest",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicerequests"
+      }
+    ]
   },
   {
     "type": "put",
@@ -6318,7 +6469,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/service_request_router.js",
-    "groupTitle": "ServiceRequest"
+    "groupTitle": "ServiceRequest",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+      }
+    ]
   },
   {
     "type": "delete",
@@ -6442,7 +6598,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/status_router.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//statuses/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -6566,7 +6727,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/status_router.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//statuses/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -6698,7 +6864,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/status_router.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//statuses"
+      }
+    ]
   },
   {
     "type": "patch",
@@ -6850,7 +7021,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/status_router.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//statuses/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -6995,7 +7171,12 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/status_router.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//statuses"
+      }
+    ]
   },
   {
     "type": "put",
@@ -7147,6 +7328,11 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "app/routers/status_router.js",
-    "groupTitle": "Status"
+    "groupTitle": "Status",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com//statuses/:id"
+      }
+    ]
   }
 ] });
