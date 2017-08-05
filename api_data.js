@@ -1,911 +1,11 @@
 define({ "api": [
   {
-    "type": "delete",
-    "url": "/jurisdictions/:id",
-    "title": "Delete specific jurisdiction information",
-    "name": "DeleteJurisdiction",
-    "group": "Jurisdiction",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "accept",
-            "description": "<p>Accept value i.e application/json</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "authorization",
-            "description": "<p>Authorization token</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Unique jurisdiction Id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": true,
-            "field": "jurisdiction",
-            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Human readable name of the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "phone",
-            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "domain",
-            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "about",
-            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "address",
-            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "location",
-            "description": "<p>Jurisdiction location coordinations</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "color",
-            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "_id",
-            "description": "<p>Unique Jurisdiction Id</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "createdAt",
-            "description": "<p>Jurisdiction creation date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "updatedAt",
-            "description": "<p>Jurisdiction last updated date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "longitude",
-            "description": "<p>Jurisdiction longitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "latitude",
-            "description": "<p>Jurisdiction latitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "uri",
-            "description": "<p>Jurisdiction URI</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " HTTP/1.1 200 OK\n {\n        \"code\": \"TSM\",\n        \"name\": \"Test\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"test.example.org\",\n        \"about\": \"Test Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "AuthorizationHeaderRequired",
-            "description": "<p>Authorization header is required</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "JWTExpired",
-            "description": "<p>Authorization token has expired</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction",
-    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
-    "sampleRequest": [
-      {
-        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/jurisdictions",
-    "title": "Get all Jurisdictions",
-    "name": "GetJurisdictions",
-    "group": "Jurisdiction",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "accept",
-            "description": "<p>Accept value i.e application/json</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "authorization",
-            "description": "<p>Authorization token</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "Example Usage",
-        "content": "curl -i http://dawasco.herokuapp.com/jurisdictions",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": true,
-            "field": "jurisdiction",
-            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Human readable name of the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "phone",
-            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "domain",
-            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "about",
-            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "address",
-            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "location",
-            "description": "<p>Jurisdiction location coordinations</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "color",
-            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "_id",
-            "description": "<p>Unique Jurisdiction Id</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "createdAt",
-            "description": "<p>Jurisdiction creation date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "updatedAt",
-            "description": "<p>Jurisdiction last updated date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "longitude",
-            "description": "<p>Jurisdiction longitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "latitude",
-            "description": "<p>Jurisdiction latitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "uri",
-            "description": "<p>Jurisdiction URI</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "pages",
-            "description": "<p>Number of results pages</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "count",
-            "description": "<p>Number of Jurisdiction results  in the current json response</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " HTTP/1.1 200 OK\n {\n \"jurisdictions\": [\n    {\n        \"code\": \"H\",\n        \"name\": \"HQ\",\n        \"phone\": \"255714999888\",\n        \"email\": \"N/A\",\n        \"domain\": \"dawasco.org\",\n        \"about\": \"Main office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#143B7F\",\n        \"_id\": \"592029e5e8dd8e00048c184b\",\n        \"createdAt\": \"2017-05-20T11:35:02.007Z\",\n        \"updatedAt\": \"2017-06-16T12:04:10.893Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e5e8dd8e00048c184b\"\n    },\n    {\n        \"jurisdiction\": {\n            \"code\": \"H\",\n            \"name\": \"HQ\",\n            \"phone\": \"255714999888\",\n            \"email\": \"N/A\",\n            \"domain\": \"dawasco.org\",\n            \"_id\": \"592029e5e8dd8e00048c184b\",\n            \"longitude\": 0,\n            \"latitude\": 0,\n            \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e5e8dd8e00048c184b\"\n        },\n        \"code\": \"I\",\n        \"name\": \"Ilala\",\n        \"phone\": \"255714999887\",\n        \"email\": \"N/A\",\n        \"domain\": \"ilala.dawasco.org\",\n        \"about\": \"Ilala Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#6EDD9B\",\n        \"_id\": \"592029e6e8dd8e00048c1850\",\n        \"createdAt\": \"2017-05-20T11:35:02.241Z\",\n       \"updatedAt\": \"2017-06-16T12:04:24.716Z\",\n         \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1850\"\n    },\n    {\n        \"jurisdiction\": {\n            \"code\": \"H\",\n            \"name\": \"HQ\",\n            \"phone\": \"255714999888\",\n            \"email\": \"N/A\",\n            \"domain\": \"dawasco.org\",\n            \"_id\": \"592029e5e8dd8e00048c184b\",\n            \"longitude\": 0,\n            \"latitude\": 0,\n            \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e5e8dd8e00048c184b\"\n        },\n        \"code\": \"T\",\n        \"name\": \"Temeke\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"temeke.dawasco.org\",\n        \"about\": \"Temeke Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n    }\n   ],\n   \"pages\": 1,\n   \"count\": 3\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "AuthorizationHeaderRequired",
-            "description": "<p>Authorization header is required</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "JWTExpired",
-            "description": "<p>Authorization token has expired</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction",
-    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
-    "sampleRequest": [
-      {
-        "url": "http://dawasco.herokuapp.com//jurisdictions"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/jurisdictions/:id",
-    "title": "Request Specific Jurisdiction information",
-    "name": "GetJurisdictions",
-    "group": "Jurisdiction",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "accept",
-            "description": "<p>Accept value i.e application/json</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "authorization",
-            "description": "<p>Authorization token</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Unique jurisdiction Id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": true,
-            "field": "jurisdiction",
-            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Human readable name of the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "phone",
-            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "domain",
-            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "about",
-            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "address",
-            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "location",
-            "description": "<p>Jurisdiction location coordinations</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "color",
-            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "_id",
-            "description": "<p>Unique Jurisdiction Id</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "createdAt",
-            "description": "<p>Jurisdiction creation date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "updatedAt",
-            "description": "<p>Jurisdiction last updated date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "longitude",
-            "description": "<p>Jurisdiction longitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "latitude",
-            "description": "<p>Jurisdiction latitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "uri",
-            "description": "<p>Jurisdiction URI</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " HTTP/1.1 200 OK\n {\n        \"code\": \"TSM\",\n        \"name\": \"Test\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"test.example.org\",\n        \"about\": \"Test Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "AuthorizationHeaderRequired",
-            "description": "<p>Authorization header is required</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "JWTExpired",
-            "description": "<p>Authorization token has expired</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction",
-    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
-    "sampleRequest": [
-      {
-        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
-      }
-    ]
-  },
-  {
-    "type": "patch",
-    "url": "/jurisdictions/:id",
-    "title": "Update specific jurisdiction information",
-    "name": "PatchJurisdiction",
-    "group": "Jurisdiction",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "accept",
-            "description": "<p>Accept value i.e application/json</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "authorization",
-            "description": "<p>Authorization token</p>"
-          },
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "content-type",
-            "description": "<p>Sent content type</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Unique jurisdiction Id.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "ObjectId",
-            "optional": true,
-            "field": "jurisdiction",
-            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Human readable name of the jurisdiction</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "phone",
-            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "domain",
-            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "about",
-            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "address",
-            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Object",
-            "optional": true,
-            "field": "location",
-            "description": "<p>Jurisdiction location coordinations</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "color",
-            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": true,
-            "field": "jurisdiction",
-            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "code",
-            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Human readable name of the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "phone",
-            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "email",
-            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "domain",
-            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "about",
-            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "address",
-            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "location",
-            "description": "<p>Jurisdiction location coordinations</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "color",
-            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "ObjectId",
-            "optional": false,
-            "field": "_id",
-            "description": "<p>Unique Jurisdiction Id</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "createdAt",
-            "description": "<p>Jurisdiction creation date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Timestamp",
-            "optional": false,
-            "field": "updatedAt",
-            "description": "<p>Jurisdiction last updated date</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "longitude",
-            "description": "<p>Jurisdiction longitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Number",
-            "optional": false,
-            "field": "latitude",
-            "description": "<p>Jurisdiction latitude</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "uri",
-            "description": "<p>Jurisdiction URI</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": " HTTP/1.1 200 OK\n {\n        \"code\": \"TSM\",\n        \"name\": \"Test\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"test.example.org\",\n        \"about\": \"Test Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "AuthorizationHeaderRequired",
-            "description": "<p>Authorization header is required</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "JWTExpired",
-            "description": "<p>Authorization token has expired</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/routers/jurisdiction_router.js",
-    "groupTitle": "Jurisdiction",
-    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
-    "sampleRequest": [
-      {
-        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
-      }
-    ]
-  },
-  {
     "type": "post",
     "url": "/jurisdictions",
-    "title": "Create a new Jurisdictions",
-    "name": "PostJurisdiction",
+    "title": "Create Jurisdictions",
     "group": "Jurisdiction",
+    "name": "CreateJurisdiction",
+    "version": "0.1.0",
     "header": {
       "fields": {
         "Header": [
@@ -913,21 +13,21 @@ define({ "api": [
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "accept",
+            "field": "Accept",
             "description": "<p>Accept value i.e application/json</p>"
           },
           {
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "authorization",
+            "field": "Authorization",
             "description": "<p>Authorization token</p>"
           },
           {
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "content-type",
+            "field": "Content-type",
             "description": "<p>Sent content type</p>"
           }
         ]
@@ -1164,22 +264,22 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
     "groupTitle": "Jurisdiction",
     "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//jurisdictions"
+        "url": "http://dawasco.herokuapp.com/jurisdictions"
       }
     ]
   },
   {
-    "type": "put",
+    "type": "delete",
     "url": "/jurisdictions/:id",
-    "title": "Update specific jurisdiction information",
-    "name": "PutJurisdiction",
+    "title": "Delete Jurisdiction",
     "group": "Jurisdiction",
+    "name": "DeleteJurisdiction",
+    "version": "0.1.0",
     "header": {
       "fields": {
         "Header": [
@@ -1187,21 +287,923 @@ define({ "api": [
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "accept",
+            "field": "Accept",
             "description": "<p>Accept value i.e application/json</p>"
           },
           {
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "authorization",
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique jurisdiction Id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": true,
+            "field": "jurisdiction",
+            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Human readable name of the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "domain",
+            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "about",
+            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "location",
+            "description": "<p>Jurisdiction location coordinations</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "color",
+            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Jurisdiction Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Jurisdiction creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Jurisdiction last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>Jurisdiction longitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>Jurisdiction latitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Jurisdiction URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n {\n        \"code\": \"TSM\",\n        \"name\": \"Test\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"test.example.org\",\n        \"about\": \"Test Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/jurisdiction_router.js",
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/jurisdictions/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/jurisdictions/:id",
+    "title": "Get Jurisdiction",
+    "group": "Jurisdiction",
+    "name": "GetJurisdiction",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique jurisdiction Id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": true,
+            "field": "jurisdiction",
+            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Human readable name of the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "domain",
+            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "about",
+            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "location",
+            "description": "<p>Jurisdiction location coordinations</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "color",
+            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Jurisdiction Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Jurisdiction creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Jurisdiction last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>Jurisdiction longitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>Jurisdiction latitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Jurisdiction URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n {\n        \"code\": \"TSM\",\n        \"name\": \"Test\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"test.example.org\",\n        \"about\": \"Test Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/jurisdiction_router.js",
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/jurisdictions/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/jurisdictions",
+    "title": "Get Jurisdictions",
+    "group": "Jurisdiction",
+    "name": "GetJurisdictions",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "defaultValue": "application/json",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Example Usage",
+        "content": "curl -i http://dawasco.herokuapp.com/jurisdictions",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": true,
+            "field": "jurisdiction",
+            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Human readable name of the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "domain",
+            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "about",
+            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "location",
+            "description": "<p>Jurisdiction location coordinations</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "color",
+            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Jurisdiction Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Jurisdiction creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Jurisdiction last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>Jurisdiction longitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>Jurisdiction latitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Jurisdiction URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Jurisdiction results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n {\n \"jurisdictions\": [\n    {\n        \"code\": \"H\",\n        \"name\": \"HQ\",\n        \"phone\": \"255714999888\",\n        \"email\": \"N/A\",\n        \"domain\": \"dawasco.org\",\n        \"about\": \"Main office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#143B7F\",\n        \"_id\": \"592029e5e8dd8e00048c184b\",\n        \"createdAt\": \"2017-05-20T11:35:02.007Z\",\n        \"updatedAt\": \"2017-06-16T12:04:10.893Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e5e8dd8e00048c184b\"\n    },\n    {\n        \"jurisdiction\": {\n            \"code\": \"H\",\n            \"name\": \"HQ\",\n            \"phone\": \"255714999888\",\n            \"email\": \"N/A\",\n            \"domain\": \"dawasco.org\",\n            \"_id\": \"592029e5e8dd8e00048c184b\",\n            \"longitude\": 0,\n            \"latitude\": 0,\n            \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e5e8dd8e00048c184b\"\n        },\n        \"code\": \"I\",\n        \"name\": \"Ilala\",\n        \"phone\": \"255714999887\",\n        \"email\": \"N/A\",\n        \"domain\": \"ilala.dawasco.org\",\n        \"about\": \"Ilala Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#6EDD9B\",\n        \"_id\": \"592029e6e8dd8e00048c1850\",\n        \"createdAt\": \"2017-05-20T11:35:02.241Z\",\n       \"updatedAt\": \"2017-06-16T12:04:24.716Z\",\n         \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1850\"\n    }\n   ],\n   \"pages\": 1,\n   \"count\": 2\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/jurisdiction_router.js",
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/jurisdictions"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/jurisdictions/:id",
+    "title": "Update(PATCH)  Jurisdiction",
+    "group": "Jurisdiction",
+    "name": "PatchJurisdiction",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
             "description": "<p>Authorization token</p>"
           },
           {
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "content-type",
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique jurisdiction Id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": true,
+            "field": "jurisdiction",
+            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Human readable name of the jurisdiction</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "domain",
+            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "about",
+            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "address",
+            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": true,
+            "field": "location",
+            "description": "<p>Jurisdiction location coordinations</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "color",
+            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": true,
+            "field": "jurisdiction",
+            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Human readable coded name of the jurisdiction. Used in deriving service request code.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Human readable name of the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Primary mobile phone number used to contact jurisdiction. Used when a party want to send an SMS or call the jurisdiction</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Primary email address used to contact jurisdiction direct. Used when a party want to send direct mail to specific jurisdiction.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "domain",
+            "description": "<p>Unique reserved domain name of the jurisdiction e.g example.go.tz. It used as jurisdiction_id in open311 api specification and whenever applicable.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "about",
+            "description": "<p>A brief summary about jurisdiction if available i.e additional details that clarify what a jurisdiction do.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>Human readable physical address of jurisdiction office. Used when a party what to physical go or visit the jurisdiction office.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "location",
+            "description": "<p>Jurisdiction location coordinations</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "color",
+            "description": "<p>A color code(in hexadecimal format) eg. #363636 used to differentiate jurisdiction visually from other service group.  If not provided it will randomly generated, but it is not guarantee its visual appeal.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Jurisdiction Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Jurisdiction creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Jurisdiction last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "longitude",
+            "description": "<p>Jurisdiction longitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "latitude",
+            "description": "<p>Jurisdiction latitude</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Jurisdiction URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n {\n        \"code\": \"TSM\",\n        \"name\": \"Test\",\n        \"phone\": \"255714999886\",\n        \"email\": \"N/A\",\n        \"domain\": \"test.example.org\",\n        \"about\": \"Test Area Office for Dar es salaam Water Supply Company(DAWASCO)\",\n        \"address\": \"N/A\",\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"color\": \"#ECB7F7\",\n        \"_id\": \"592029e6e8dd8e00048c1851\",\n        \"createdAt\": \"2017-05-20T11:35:02.263Z\",\n        \"updatedAt\": \"2017-06-16T12:04:37.645Z\",\n        \"longitude\": 0,\n        \"latitude\": 0,\n        \"uri\": \"https://dawasco.herokuapp.com/jurisdictions/592029e6e8dd8e00048c1851\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/jurisdiction_router.js",
+    "groupTitle": "Jurisdiction",
+    "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/jurisdictions/:id"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/jurisdictions/:id",
+    "title": "Update(PUT) Jurisdiction",
+    "group": "Jurisdiction",
+    "name": "PutJurisdiction",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
             "description": "<p>Sent content type</p>"
           }
         ]
@@ -1445,13 +1447,12 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "app/routers/jurisdiction_router.js",
     "groupTitle": "Jurisdiction",
     "groupDescription": "<p>An entity (e.g minicipal) responsible for addressing service request(issue).</p> <p>It may be a self managed entity or division within another entity(jurisdiction) in case there is hierarchy.</p>",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//jurisdictions/:id"
+        "url": "http://dawasco.herokuapp.com/jurisdictions/:id"
       }
     ]
   },
@@ -1580,7 +1581,7 @@ define({ "api": [
     "groupTitle": "Priority",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//priorities/:id"
+        "url": "http://dawasco.herokuapp.com/priorities/:id"
       }
     ]
   },
@@ -1728,7 +1729,7 @@ define({ "api": [
     "groupTitle": "Priority",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//priorities"
+        "url": "http://dawasco.herokuapp.com/priorities"
       }
     ]
   },
@@ -1857,7 +1858,7 @@ define({ "api": [
     "groupTitle": "Priority",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//priorities/:id"
+        "url": "http://dawasco.herokuapp.com/priorities/:id"
       }
     ]
   },
@@ -2007,7 +2008,7 @@ define({ "api": [
     "groupTitle": "Priority",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//priorities/:id"
+        "url": "http://dawasco.herokuapp.com/priorities/:id"
       }
     ]
   },
@@ -2168,7 +2169,7 @@ define({ "api": [
     "groupTitle": "Priority",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//priorities"
+        "url": "http://dawasco.herokuapp.com/priorities"
       }
     ]
   },
@@ -2325,7 +2326,7 @@ define({ "api": [
     "groupTitle": "Priority",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//priorities/:id"
+        "url": "http://dawasco.herokuapp.com/priorities/:id"
       }
     ]
   },
@@ -2500,7 +2501,7 @@ define({ "api": [
     "groupTitle": "Service",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//services/:id"
+        "url": "http://dawasco.herokuapp.com/services/:id"
       }
     ]
   },
@@ -2675,7 +2676,7 @@ define({ "api": [
     "groupTitle": "Service",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//services/:id"
+        "url": "http://dawasco.herokuapp.com/services/:id"
       }
     ]
   },
@@ -2844,7 +2845,7 @@ define({ "api": [
     "groupTitle": "Service",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//services"
+        "url": "http://dawasco.herokuapp.com/services"
       }
     ]
   },
@@ -2998,7 +2999,7 @@ define({ "api": [
     "groupTitle": "ServiceGroup",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+        "url": "http://dawasco.herokuapp.com/servicegroups/:id"
       }
     ]
   },
@@ -3152,7 +3153,7 @@ define({ "api": [
     "groupTitle": "ServiceGroup",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+        "url": "http://dawasco.herokuapp.com/servicegroups/:id"
       }
     ]
   },
@@ -3314,7 +3315,7 @@ define({ "api": [
     "groupTitle": "ServiceGroup",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicegroups"
+        "url": "http://dawasco.herokuapp.com/servicegroups"
       }
     ]
   },
@@ -3503,7 +3504,7 @@ define({ "api": [
     "groupTitle": "ServiceGroup",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+        "url": "http://dawasco.herokuapp.com/servicegroups/:id"
       }
     ]
   },
@@ -3692,7 +3693,7 @@ define({ "api": [
     "groupTitle": "ServiceGroup",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicegroups"
+        "url": "http://dawasco.herokuapp.com/servicegroups"
       }
     ]
   },
@@ -3881,7 +3882,7 @@ define({ "api": [
     "groupTitle": "ServiceGroup",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicegroups/:id"
+        "url": "http://dawasco.herokuapp.com/servicegroups/:id"
       }
     ]
   },
@@ -4105,7 +4106,7 @@ define({ "api": [
     "groupTitle": "Service",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//services/:id"
+        "url": "http://dawasco.herokuapp.com/services/:id"
       }
     ]
   },
@@ -4308,7 +4309,7 @@ define({ "api": [
     "groupTitle": "Service",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//services"
+        "url": "http://dawasco.herokuapp.com/services"
       }
     ]
   },
@@ -4532,7 +4533,7 @@ define({ "api": [
     "groupTitle": "Service",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//services/:id"
+        "url": "http://dawasco.herokuapp.com/services/:id"
       }
     ]
   },
@@ -4805,7 +4806,7 @@ define({ "api": [
     "groupTitle": "ServiceRequest",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+        "url": "http://dawasco.herokuapp.com/servicerequests/:id"
       }
     ]
   },
@@ -5078,7 +5079,7 @@ define({ "api": [
     "groupTitle": "ServiceRequest",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+        "url": "http://dawasco.herokuapp.com/servicerequests/:id"
       }
     ]
   },
@@ -5345,7 +5346,7 @@ define({ "api": [
     "groupTitle": "ServiceRequest",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicerequests"
+        "url": "http://dawasco.herokuapp.com/servicerequests"
       }
     ]
   },
@@ -5723,7 +5724,7 @@ define({ "api": [
     "groupTitle": "ServiceRequest",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+        "url": "http://dawasco.herokuapp.com/servicerequests/:id"
       }
     ]
   },
@@ -6094,7 +6095,7 @@ define({ "api": [
     "groupTitle": "ServiceRequest",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicerequests"
+        "url": "http://dawasco.herokuapp.com/servicerequests"
       }
     ]
   },
@@ -6472,7 +6473,7 @@ define({ "api": [
     "groupTitle": "ServiceRequest",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//servicerequests/:id"
+        "url": "http://dawasco.herokuapp.com/servicerequests/:id"
       }
     ]
   },
@@ -6601,7 +6602,7 @@ define({ "api": [
     "groupTitle": "Status",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//statuses/:id"
+        "url": "http://dawasco.herokuapp.com/statuses/:id"
       }
     ]
   },
@@ -6730,7 +6731,7 @@ define({ "api": [
     "groupTitle": "Status",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//statuses/:id"
+        "url": "http://dawasco.herokuapp.com/statuses/:id"
       }
     ]
   },
@@ -6867,7 +6868,7 @@ define({ "api": [
     "groupTitle": "Status",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//statuses"
+        "url": "http://dawasco.herokuapp.com/statuses"
       }
     ]
   },
@@ -7024,7 +7025,7 @@ define({ "api": [
     "groupTitle": "Status",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//statuses/:id"
+        "url": "http://dawasco.herokuapp.com/statuses/:id"
       }
     ]
   },
@@ -7174,7 +7175,7 @@ define({ "api": [
     "groupTitle": "Status",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//statuses"
+        "url": "http://dawasco.herokuapp.com/statuses"
       }
     ]
   },
@@ -7331,7 +7332,7 @@ define({ "api": [
     "groupTitle": "Status",
     "sampleRequest": [
       {
-        "url": "http://dawasco.herokuapp.com//statuses/:id"
+        "url": "http://dawasco.herokuapp.com/statuses/:id"
       }
     ]
   }
