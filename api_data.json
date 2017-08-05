@@ -27,7 +27,7 @@
             "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "Content-type",
+            "field": "Content-Type",
             "description": "<p>Sent content type</p>"
           }
         ]
@@ -41,7 +41,7 @@
             "type": "ObjectId",
             "optional": true,
             "field": "jurisdiction",
-            "description": "<p>Top jurisdiction under which this jurisdiction derived.  This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
+            "description": "<p>Top jurisdiction under which this jurisdiction derived. This is applicable where a large jurisdiction delegates its power to its division(s). If not set the jurisdiction will be treated as a top jurisdiction and will be affected by any logics implemented  accordingly.</p>"
           },
           {
             "group": "Parameter",
