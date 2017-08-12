@@ -1,5 +1,1006 @@
 [
   {
+    "type": "delete",
+    "url": "/comments/:id",
+    "title": "Delete Comment",
+    "group": "Comment",
+    "name": "DeleteComment",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Comment Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Comment creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Comment last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Comment URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Comments results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 0K\n{\n    \"request\": \"592c22b07e9ff9000446e709\",\n    \"commentator\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"255765111111\",\n        \"_id\": \"592029e6e8dd8e00048c1867\",\n        \"permissions\": [],\n        \"email\": \"johndoe@gmail.com\",\n        \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n    },\n    \"content\": \"I've just called the ward officer\",\n    \"_id\": \"592e8951d5ba510004b97cbf\",\n    \"createdAt\": \"2017-05-31T09:13:53.735Z\",\n    \"updatedAt\": \"2017-05-31T09:13:53.735Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/comments/592e8951d5ba510004b97cbf\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/comment_router.js",
+    "groupTitle": "Comment",
+    "groupDescription": "<p>A record of a comment(or internal not) on a service request(issue) by a party.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/comments/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/comments/:id",
+    "title": "Get Comment",
+    "group": "Comment",
+    "name": "GetComment",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Comment Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Comment creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Comment last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Comment URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Comments results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"request\": \"592c22b07e9ff9000446e709\",\n    \"commentator\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"255765111111\",\n        \"_id\": \"592029e6e8dd8e00048c1867\",\n        \"permissions\": [],\n        \"email\": \"johndoe@gmail.com\",\n        \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n    },\n    \"content\": \"I've just called the ward officer\",\n    \"_id\": \"592e8951d5ba510004b97cbf\",\n    \"createdAt\": \"2017-05-31T09:13:53.735Z\",\n    \"updatedAt\": \"2017-05-31T09:13:53.735Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/comments/592e8951d5ba510004b97cbf\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/comment_router.js",
+    "groupTitle": "Comment",
+    "groupDescription": "<p>A record of a comment(or internal not) on a service request(issue) by a party.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/comments/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/comments",
+    "title": "Get Comments",
+    "group": "Comment",
+    "name": "GetComments",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Example Usage",
+        "content": "curl -i http://dawasco.herokuapp.com/permissions",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Comment creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Comment last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Comment URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Comments results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n{\n  \"comments\": [\n      {\n          \"request\": \"592c22b07e9ff9000446e709\",\n          \"commentator\": {\n              \"name\": \"John Doe\",\n              \"phone\": \"255765111111\",\n              \"_id\": \"592029e6e8dd8e00048c1867\",\n              \"permissions\": [],\n              \"email\": \"johndoe@gmail.com\",\n              \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n          },\n          \"content\": \"I've just called the ward officer\",\n          \"_id\": \"592e8951d5ba510004b97cbf\",\n          \"createdAt\": \"2017-05-31T09:13:53.735Z\",\n          \"updatedAt\": \"2017-05-31T09:13:53.735Z\",\n          \"uri\": \"https://dawasco.herokuapp.com/comments/592e8951d5ba510004b97cbf\"\n      },\n      {\n          \"request\": \"595d13a7389c700004a2a081\",\n          \"commentator\": {\n              \"name\": \"John Doe\",\n              \"phone\": \"255765111111\",\n              \"_id\": \"592029e6e8dd8e00048c1867\",\n              \"permissions\": [],\n              \"email\": \"johndoe@gmail.com\",\n              \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n          },\n          \"content\": \"I'm still trying to solve the problem.\",\n          \"_id\": \"596e8dbbddd43f0004236405\",\n          \"createdAt\": \"2017-07-18T22:37:47.040Z\",\n          \"updatedAt\": \"2017-07-18T22:37:47.040Z\",\n          \"uri\": \"https://dawasco.herokuapp.com/comments/596e8dbbddd43f0004236405\"\n      },\n      {\n          \"request\": \"59820e3cf4ddc800047d01f6\",\n          \"commentator\": {\n              \"name\": \"John Doe\",\n              \"phone\": \"255765111111\",\n              \"_id\": \"592029e6e8dd8e00048c1867\",\n              \"permissions\": [],\n              \"email\": \"johndoe@gmail.com\",\n              \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n          },\n          \"content\": \"ooiioi\",\n          \"_id\": \"598345031cafd600040b9e72\",\n          \"createdAt\": \"2017-08-03T15:45:07.194Z\",\n          \"updatedAt\": \"2017-08-03T15:45:07.194Z\",\n          \"uri\": \"https://dawasco.herokuapp.com/comments/598345031cafd600040b9e72\"\n      },\n      {\n          \"request\": \"59820e3cf4ddc800047d01f6\",\n          \"commentator\": {\n              \"name\": \"John Doe\",\n              \"phone\": \"255765111111\",\n              \"_id\": \"592029e6e8dd8e00048c1867\",\n              \"permissions\": [],\n              \"email\": \"johndoe@gmail.com\",\n              \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n          },\n          \"content\": \"5654\",\n          \"_id\": \"598345081cafd600040b9e7b\",\n          \"createdAt\": \"2017-08-03T15:45:12.372Z\",\n          \"updatedAt\": \"2017-08-03T15:45:12.372Z\",\n          \"uri\": \"https://dawasco.herokuapp.com/comments/598345081cafd600040b9e7b\"\n      },\n      {\n          \"request\": \"59807d1ee8add60004061b5d\",\n          \"commentator\": {\n              \"name\": \"John Doe\",\n              \"phone\": \"255765111111\",\n              \"_id\": \"592029e6e8dd8e00048c1867\",\n              \"permissions\": [],\n              \"email\": \"johndoe@gmail.com\",\n              \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n          },\n          \"content\": \"56465464\",\n          \"_id\": \"598346221cafd600040b9ea2\",\n          \"createdAt\": \"2017-08-03T15:49:54.900Z\",\n          \"updatedAt\": \"2017-08-03T15:49:54.900Z\",\n          \"uri\": \"https://dawasco.herokuapp.com/comments/598346221cafd600040b9ea2\"\n      },\n      {\n          \"request\": \"59807d1ee8add60004061b5d\",\n          \"commentator\": {\n              \"name\": \"John Doe\",\n              \"phone\": \"255765111111\",\n              \"_id\": \"592029e6e8dd8e00048c1867\",\n              \"permissions\": [],\n              \"email\": \"johndoe@gmail.com\",\n              \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n          },\n          \"content\": \"65+655656\",\n          \"_id\": \"598346271cafd600040b9ea6\",\n          \"createdAt\": \"2017-08-03T15:49:59.402Z\",\n          \"updatedAt\": \"2017-08-03T15:49:59.402Z\",\n          \"uri\": \"https://dawasco.herokuapp.com/comments/598346271cafd600040b9ea6\"\n      }\n  ],\n  \"pages\": 1,\n  \"count\": 6\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/comment_router.js",
+    "groupTitle": "Comment",
+    "groupDescription": "<p>A record of a comment(or internal not) on a service request(issue) by a party.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/comments"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/comments/:id",
+    "title": "Update(PATCH) Comment",
+    "group": "Comment",
+    "name": "PatchComment",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Comment creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Comment last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Comment URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Comments results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 0K\n{\n    \"request\": \"592c22b07e9ff9000446e709\",\n    \"commentator\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"255765111111\",\n        \"_id\": \"592029e6e8dd8e00048c1867\",\n        \"permissions\": [],\n        \"email\": \"johndoe@gmail.com\",\n        \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n    },\n    \"content\": \"I've just called the ward officer\",\n    \"_id\": \"592e8951d5ba510004b97cbf\",\n    \"createdAt\": \"2017-05-31T09:13:53.735Z\",\n    \"updatedAt\": \"2017-05-31T09:13:53.735Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/comments/592e8951d5ba510004b97cbf\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/comment_router.js",
+    "groupTitle": "Comment",
+    "groupDescription": "<p>A record of a comment(or internal not) on a service request(issue) by a party.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/comments/:id"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/comments",
+    "title": "Create Comment",
+    "group": "Comment",
+    "name": "PostComment",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Comment creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Comment last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Comment URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Comments results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n    \"request\": \"592c22b07e9ff9000446e709\",\n    \"commentator\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"255765111111\",\n        \"_id\": \"592029e6e8dd8e00048c1867\",\n        \"permissions\": [],\n        \"email\": \"johndoe@gmail.com\",\n        \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n    },\n    \"content\": \"I've just called the ward officer\",\n    \"_id\": \"592e8951d5ba510004b97cbf\",\n    \"createdAt\": \"2017-05-31T09:13:53.735Z\",\n    \"updatedAt\": \"2017-05-31T09:13:53.735Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/comments/592e8951d5ba510004b97cbf\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/comment_router.js",
+    "groupTitle": "Comment",
+    "groupDescription": "<p>A record of a comment(or internal not) on a service request(issue) by a party.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/comments"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/comments/:id",
+    "title": "Update(PUT) Comment",
+    "group": "Comment",
+    "name": "PutComment",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "request",
+            "description": "<p>A service request which commented on</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "commentator",
+            "description": "<p>A party whose made a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>A content of a comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Comment Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Comment creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Comment last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Comment URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Comments results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 0K\n{\n    \"request\": \"592c22b07e9ff9000446e709\",\n    \"commentator\": {\n        \"name\": \"John Doe\",\n        \"phone\": \"255765111111\",\n        \"_id\": \"592029e6e8dd8e00048c1867\",\n        \"permissions\": [],\n        \"email\": \"johndoe@gmail.com\",\n        \"uri\": \"https://dawasco.herokuapp.com/parties/592029e6e8dd8e00048c1867\"\n    },\n    \"content\": \"I've just called the ward officer\",\n    \"_id\": \"592e8951d5ba510004b97cbf\",\n    \"createdAt\": \"2017-05-31T09:13:53.735Z\",\n    \"updatedAt\": \"2017-05-31T09:13:53.735Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/comments/592e8951d5ba510004b97cbf\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/comment_router.js",
+    "groupTitle": "Comment",
+    "groupDescription": "<p>A record of a comment(or internal not) on a service request(issue) by a party.</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/comments/:id"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/jurisdictions",
     "title": "Create Jurisdiction",
@@ -6386,6 +7387,888 @@
     "sampleRequest": [
       {
         "url": "http://dawasco.herokuapp.com/servicerequests/:id"
+      }
+    ]
+  },
+  {
+    "type": "delete",
+    "url": "/settings/:id",
+    "title": "Delete Setting",
+    "group": "Setting",
+    "name": "DeleteSetting",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Setting Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Setting creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Setting last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Setting URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"key\": \"phone\",\n    \"value\": 255714095061,\n    \"_id\": \"592029e5e8dd8e00048c1812\",\n    \"createdAt\": \"2017-05-20T11:35:01.528Z\",\n    \"updatedAt\": \"2017-05-20T11:35:01.528Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1812\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/setting_router.js",
+    "groupTitle": "Setting",
+    "groupDescription": "<p>Manage setting(s)</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/settings/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/settings/:id",
+    "title": "Get Setting",
+    "group": "Setting",
+    "name": "GetSetting",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Setting Id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Setting creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Setting last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Setting URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"key\": \"phone\",\n    \"value\": 255714095061,\n    \"_id\": \"592029e5e8dd8e00048c1812\",\n    \"createdAt\": \"2017-05-20T11:35:01.528Z\",\n    \"updatedAt\": \"2017-05-20T11:35:01.528Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1812\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/setting_router.js",
+    "groupTitle": "Setting",
+    "groupDescription": "<p>Manage setting(s)</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/settings/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/settings",
+    "title": "Get Settings",
+    "group": "Setting",
+    "name": "GetSettings",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Example Usage",
+        "content": "curl -i http://dawasco.herokuapp.com/settings",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Setting creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Setting last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Setting URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Setting results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"settings\":[\n        {\n            \"key\": \"name\",\n             \"value\": \"Sample Company\",\n             \"_id\": \"592029e5e8dd8e00048c1810\",\n             \"createdAt\": \"2017-05-20T11:35:01.415Z\",\n             \"updatedAt\": \"2017-05-20T11:35:01.415Z\",\n             \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1810\"\n         },\n         {\n             \"key\": \"email\",\n             \"value\": \"info@sample.com\",\n             \"_id\": \"592029e5e8dd8e00048c1811\",\n             \"createdAt\": \"2017-05-20T11:35:01.517Z\",\n             \"updatedAt\": \"2017-05-20T11:35:01.517Z\",\n             \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1811\"\n         },\n         {\n             \"key\": \"phone\",\n             \"value\": 255714095061,\n             \"_id\": \"592029e5e8dd8e00048c1812\",\n             \"createdAt\": \"2017-05-20T11:35:01.528Z\",\n             \"updatedAt\": \"2017-05-20T11:35:01.528Z\",\n             \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1812\"\n         }\n      ],\n  \"pages\": 1,\n  \"count\": 3\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/setting_router.js",
+    "groupTitle": "Setting",
+    "groupDescription": "<p>Manage setting(s)</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/settings"
+      }
+    ]
+  },
+  {
+    "type": "patch",
+    "url": "/settings/:id",
+    "title": "Update(PATCH) Setting",
+    "group": "Setting",
+    "name": "PatchSetting",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Setting creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Setting last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Setting URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"key\": \"phone\",\n    \"value\": 255714095061,\n    \"_id\": \"592029e5e8dd8e00048c1812\",\n    \"createdAt\": \"2017-05-20T11:35:01.528Z\",\n    \"updatedAt\": \"2017-05-20T11:35:01.528Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1812\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/setting_router.js",
+    "groupTitle": "Setting",
+    "groupDescription": "<p>Manage setting(s)</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/settings/:id"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/settings",
+    "title": "Create Setting",
+    "group": "Setting",
+    "name": "PostSetting",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Setting creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Setting last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Setting URI</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Number of results pages</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Number of Setting results  in the current json response</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created\n{\n    \"key\": \"phone\",\n    \"value\": 255714095061,\n    \"_id\": \"592029e5e8dd8e00048c1812\",\n    \"createdAt\": \"2017-05-20T11:35:01.528Z\",\n    \"updatedAt\": \"2017-05-20T11:35:01.528Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1812\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/setting_router.js",
+    "groupTitle": "Setting",
+    "groupDescription": "<p>Manage setting(s)</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/settings"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/settings/:id",
+    "title": "Update(PUT) Setting",
+    "group": "Setting",
+    "name": "PutSetting",
+    "version": "0.1.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p>Accept value i.e application/json</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization token</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Sent content type</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>Unique Setting Name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "value",
+            "description": "<p>Setting Value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "ObjectId",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Unique Setting Id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "createdAt",
+            "description": "<p>Setting creation date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Timestamp",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Setting last updated date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "uri",
+            "description": "<p>Setting URI</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"key\": \"phone\",\n    \"value\": 255714095061,\n    \"_id\": \"592029e5e8dd8e00048c1812\",\n    \"createdAt\": \"2017-05-20T11:35:01.528Z\",\n    \"updatedAt\": \"2017-05-20T11:35:01.528Z\",\n    \"uri\": \"https://dawasco.herokuapp.com/settings/592029e5e8dd8e00048c1812\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthorizationHeaderRequired",
+            "description": "<p>Authorization header is required</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "JWTExpired",
+            "description": "<p>Authorization token has expired</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"Authorization header required\",\n  \"error\":{}\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 403 Forbidden\n{\n  \"success\":false,\n  \"message :\"jwt expired\",\n  \"error\":{}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routers/setting_router.js",
+    "groupTitle": "Setting",
+    "groupDescription": "<p>Manage setting(s)</p>",
+    "sampleRequest": [
+      {
+        "url": "http://dawasco.herokuapp.com/settings/:id"
       }
     ]
   },
